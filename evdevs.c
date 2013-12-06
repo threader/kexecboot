@@ -296,6 +296,8 @@ int inputs_process_evdev(int fd)
 			break;
 		case KEY_DOWN:
 		case KEY_VOLUMEDOWN:
+                        action = A_DOWN;
+                        break;
 		case BTN_TOUCH:	/* GTA02: touchscreen touch (330) */
 			action = A_DOWN;
 			break;
@@ -320,6 +322,8 @@ int inputs_process_evdev(int fd)
 		case KEY_PHONE:		/* GTA02: AUX (169) */
 			action = A_SELECT;
 			break;
+		case 231: action = A_SELECT; break;
+		case 61: action = A_SELECT; break;
 #ifdef USE_NUMKEYS
 		/* Return keys 0-9 */
 		case KEY_0: action = A_KEY0; break;
