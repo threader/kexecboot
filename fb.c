@@ -442,7 +442,11 @@ int fb_new(int angle)
 
 	if ((fb.fd = open(fbdev, O_RDWR)) < 0) {
 		log_msg(lg, "Error opening /dev/fb0: %s", ERRMSG);
+		fbdev ="/dev/graphics/fb0";
+        if ((fb.fd = open(fbdev, O_RDWR)) < 0) {
+                log_msg(lg, "Error opening /dev/graphics/fb0: %s", ERRMSG);
 		goto fail;
+		}
 	}
 
 	if (ioctl(fb.fd, FBIOGET_VSCREENINFO, &fb_var) == -1) {
